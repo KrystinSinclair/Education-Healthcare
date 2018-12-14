@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--connect to Google API-->
+	<title>Healthcare</title>
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript">
+		google.charts.load('current', {'packages':['corechart']});
+		google.charts.setOnLoadCallback(getAllSheets);
+		//make function to get the columns from the sheet
+		function getAllSheets() {
+
+			findtheTable('Healthcare',
+			              'SELECT A,B,C,D,E,F',
+						  HealthcareSpendingResponseHandler);
+
+
+
+			findtheTable('Healthcare',
+			              'SELECT A,F',
+						  HealthcareSpendinglatestResponseHandler);
+
+			findtheTable('Healthcare',
+			              'SELECT A,E',
+						  HealthcareSpending2015ResponseHandler);
+
+			findtheTable('Healthcare',
+			              'SELECT A,D',
+						  HealthcareSpending2014ResponseHandler);
+
+			findtheTable('Healthcare',
+			              'SELECT A,C',
+						  HealthcareSpending2013ResponseHandler);
+
+			findtheTable('Healthcare',
+			              'SELECT A,B',
+						  HealthcareSpending2012ResponseHandler);
+			findtheTable('HealthcarePerson',
+			              'SELECT A,F,M',
+						  HealthcareGDPPersonResponseHandler);
+
+			findtheTable('HealthcarePerson',
+			              'SELECT A,E,L',
+						  HealthcareGDPPerson2015ResponseHandler);
+
+			findtheTable('HealthcarePerson',
+			              'SELECT A,D,K',
+						  HealthcareGDPPerson2014ResponseHandler);
+
+			findtheTable('HealthcarePerson',
+			              'SELECT A,C,J',
+						  HealthcareGDPPerson2013ResponseHandler);
+
+			findtheTable('HealthcarePerson',
+			              'SELECT A,B,I',
+						  HealthcareGDPPerson2012ResponseHandler);
+
+
+
+
+
+
+			findtheTable('HealthcareShareGDP',
+			              'SELECT A,B,C,D,E,F',
+						  HealthcareShareGDPResponseHandler);
+			findtheTable('HealthcareShareGDP',
+			              'SELECT A,F',
+						  HealthcareShareGDP2016ResponseHandler);
+			findtheTable('HealthcareShareGDP',
+			              'SELECT A,E',
+						  HealthcareShareGDP2015ResponseHandler);
+
+			findtheTable('HealthcareShareGDP',
+			              'SELECT A,D',
+						  HealthcareShareGDP2014ResponseHandler);
+			findtheTable('HealthcareShareGDP',
+			              'SELECT A,C',
+						  HealthcareShareGDP2013ResponseHandler);
+			findtheTable('HealthcareShareGDP',
+			              'SELECT A,B',
+						  HealthcareShareGDP2012ResponseHandler);
+
+
+			findtheTable('Healthcare',
+			              'SELECT I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,AA,AB',
+						  HealthcareovertimeResponseHandler);
+			findtheTable('Healthcare',
+			              'SELECT I,J',
+						  HealthcareovertimeUSAResponseHandler);
+			findtheTable('Healthcare',
+			              'SELECT I,K',
+						  HealthcareovertimeJapanResponseHandler);
+			findtheTable('Healthcare',
+			              'SELECT I,L',
+						  HealthcareovertimeGermanyResponseHandler);
+			findtheTable('Healthcare',
+			              'SELECT I,M',
+						  HealthcareovertimeFranceResponseHandler);
+			findtheTable('Healthcare',
+			              'SELECT I,N',
+						  HealthcareovertimeUKResponseHandler);
+			findtheTable('Healthcare',
+			              'SELECT I,O',
+						  HealthcareovertimeItalyResponseHandler);
+			findtheTable('Healthcare',
+			              'SELECT I,P',
+						  HealthcareovertimeCanadaResponseHandler);
+			findtheTable('Healthcare',
+			              'SELECT I,Q',
+						  HealthcareovertimeKoreaResponseHandler);
+			findtheTable('Healthcare',
+			              'SELECT I,R',
+						  HealthcareovertimeSpainResponseHandler);
+			findtheTable('Healthcare',
+			              'SELECT I,S',
+						  HealthcareovertimeMexicoResponseHandler);
+			findtheTable('Healthcare',
+			              'SELECT I,T',
+						  HealthcareovertimeAustraliaResponseHandler);
+			findtheTable('Healthcare',
+			              'SELECT I,U',
+						  HealthcareovertimeTurkeyResponseHandler);
+			findtheTable('Healthcare',
+			              'SELECT I,V',
+						  HealthcareovertimeNetherlandsResponseHandler);
+			findtheTable('Healthcare',
+			              'SELECT I,W',
+						  HealthcareovertimePolandResponseHandler);
+			findtheTable('Healthcare',
+			              'SELECT I,X',
+						  HealthcareovertimeSwitzerlandResponseHandler);
+			findtheTable('Healthcare',
+			              'SELECT I,Y',
+						  HealthcareovertimeSwedenResponseHandler);
+			findtheTable('Healthcare',
+			              'SELECT I,Z',
+						  HealthcareovertimeBelgiumResponseHandler);
+			findtheTable('Healthcare',
+			              'SELECT I,AA',
+						  HealthcareovertimeAustriaResponseHandler);
+			findtheTable('Healthcare',
+			              'SELECT I,AB',
+						  HealthcareovertimeChileResponseHandler);
+
+
+
+
+
+			findtheTable('HealthcarePerson',
+			              'SELECT A,B,C,D,E,F',
+						  HealthcarePersonResponseHandler);
+			findtheTable('HealthcarePerson',
+			              'SELECT A,F',
+						  HealthcarePerson2016ResponseHandler);
+			findtheTable('HealthcarePerson',
+			              'SELECT A,E',
+						  HealthcarePerson2015ResponseHandler);
+			findtheTable('HealthcarePerson',
+			              'SELECT A,D',
+						  HealthcarePerson2014ResponseHandler);
+			findtheTable('HealthcarePerson',
+			              'SELECT A,C',
+						  HealthcarePerson2013ResponseHandler);
+			findtheTable('HealthcarePerson',
+			              'SELECT A,B',
+						  HealthcarePerson2012ResponseHandler);
+
+			findtheTable('HealthcareFixedChange',
+			              'SELECT A,B,C,D,E',
+						  HealthcareFixedChangeResponseHandler);
+
+			findtheTable('HealthcarePercentchange',
+			              'SELECT A,B,C,D,E',
+						  HealthcarePercentChangeResponseHandler);
+
+			findtheTable('HealthcareFixedChange',
+			              'SELECT A,F',
+						  HealthcareFixedChangeOverallResponseHandler);
+
+			findtheTable('HealthcarePercentchange',
+			              'SELECT A,F',
+						  HealthcarePercentChangeOverallResponseHandler);
+			findtheTable('Healthcare',
+							'SELECT A,G',
+							HealthcareForecastResponseHandler);
+
+
+		} //getAllSheets()
+		//connect to google sheets
+		function findtheTable(sheetName, query, responseHandler) {
+
+			var queryString = encodeURIComponent(query);
+			var query = new google.visualization.Query(
+				'https://docs.google.com/spreadsheets/d/16rYC7mU5lV_yJzgStAj22GZ9FnOZAneit2nwuOR_zEk/gviz/tq?sheet='
+				+ sheetName + '&headers=1&tq=' + queryString);
+			query.send(responseHandler);
+		} //findtheTable
+		//make functions to get response handler to get the data and make chart type and chart options
+		function HealthcareSpendingResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				vAxis: {title: 'Spending in Millions ($)'},
+				hAxis: {title: 'Country'}
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('healthcare_spending_div'));
+
+			chart.draw(data, options);
+
+		} //healthcareSpendingResponseHandler
+
+
+			function HealthcareSpendinglatestResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Country'},
+				hAxis: {title: 'Spending in Millions ($)'},
+				title: 'Healthcare Spending 2016'
+			};
+
+			var chart = new google.visualization.BarChart(
+						document.getElementById('healthcare_spending2016_div'));
+
+			chart.draw(data, options);
+
+		} //healthcareSpendinglatestResponseHandler
+
+		function HealthcareSpending2015ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Country'},
+				hAxis: {title: 'Spending in Millions ($)'},
+				title: 'Healthcare Spending 2015'
+			};
+
+			var chart = new google.visualization.BarChart(
+						document.getElementById('healthcare_spending2015_div'));
+
+			chart.draw(data, options);
+
+		} //healthcareSpending2015ResponseHandler
+
+		function HealthcareSpending2014ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Country'},
+				hAxis: {title: 'Spending in Millions ($)'},
+				title: 'Healthcare Spending 2014'
+			};
+
+			var chart = new google.visualization.BarChart(
+						document.getElementById('healthcare_spending2014_div'));
+
+			chart.draw(data, options);
+
+		} //healthcareSpending2014ResponseHandler
+
+		function HealthcareSpending2013ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Country'},
+				hAxis: {title: 'Spending in Millions ($)'},
+				title: 'Healthcare Spending 2013'
+			};
+
+			var chart = new google.visualization.BarChart(
+						document.getElementById('healthcare_spending2013_div'));
+
+			chart.draw(data, options);
+
+		} //healthcareSpending2013ResponseHandler
+
+		function HealthcareSpending2012ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Country'},
+				hAxis: {title: 'Spending in Millions ($)'},
+				title: 'Healthcare Spending 2012'
+			};
+
+			var chart = new google.visualization.BarChart(
+						document.getElementById('healthcare_spending2012_div'));
+
+			chart.draw(data, options);
+
+		} //healthcareSpending2012ResponseHandler
+
+
+
+
+		function HealthcareShareGDPResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				vAxis: {title: '%'},
+				hAxis: {title: 'Country'}
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('healthcarepercentGDP_div'));
+
+			chart.draw(data, options);
+
+		} //HealthcareShareGDPResponseHandler
+
+		function HealthcareShareGDP2016ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title:'%'},
+				hAxis: {title: 'Country'},
+				title: 'Healthcare as a % of GDP 2016'
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('healthcarepercentGDP2016_div'));
+
+			chart.draw(data, options);
+
+		} //HealthcareShareGDP2016ResponseHandler
+		function HealthcareShareGDP2015ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: '%'},
+				hAxis: {title: 'Country'},
+				title: 'Healthcare as a % of GDP 2015'
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('healthcarepercentGDP2015_div'));
+
+			chart.draw(data, options);
+
+		} //HealthcareShareGDP2015ResponseHandler
+		function HealthcareShareGDP2014ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: '%'},
+				hAxis: {title: 'Country'},
+				title: 'Healthcare as a % of GDP 2014'
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('healthcarepercentGDP2014_div'));
+
+			chart.draw(data, options);
+
+		} //HealthcareShareGDP2014ResponseHandler
+		function HealthcareShareGDP2013ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: '%'},
+				hAxis: {title: 'Country'},
+				title: 'Healthcare as a % of GDP 2013'
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('healthcarepercentGDP2013_div'));
+
+			chart.draw(data, options);
+
+		} //HealthcareShareGDP2013ResponseHandler
+		function HealthcareShareGDP2012ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: '%'},
+				hAxis: {title: 'Country'},
+				title: 'Healthcare as a % of GDP 2012'
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('healthcarepercentGDP2012_div'));
+
+			chart.draw(data, options);
+
+		} //HealthcareShareGDP2012ResponseHandler
+
+		function HealthcareovertimeResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Spending in Millions ($)'},
+				hAxis: {title: 'Country'}
+			};
+
+			var chart = new google.visualization.LineChart(
+						document.getElementById('healthcareovertime_div'));
+
+			chart.draw(data, options);
+
+		} //HealthcareovertimeResponseHandler
+
+		function HealthcareovertimeUSAResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Spending in Millions ($)'},
+				hAxis: {title: 'Country', ticks: ['2012', '2013', '2014', '2015', '2016']}
+			};
+
+			var chart = new google.visualization.LineChart(
+						document.getElementById('healthcareovertimeUSA_div'));
+
+			chart.draw(data, options);
+
+		} //HealthcareovertimeUSAResponseHandler
+		function HealthcareovertimeUKResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Spending in Millions ($)'},
+				hAxis: {title: 'Country', ticks: ['2012', '2013', '2014', '2015', '2016']}
+			};
+
+			var chart = new google.visualization.LineChart(
+						document.getElementById('healthcareovertimeUK_div'));
+
+			chart.draw(data, options);
+
+		} //HealthcareovertimeUKResponseHandler
+		function HealthcareovertimeJapanResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Spending in Millions ($)'},
+				hAxis: {title: 'Country', ticks: ['2012', '2013', '2014', '2015', '2016']}
+			};
+
+			var chart = new google.visualization.LineChart(
+						document.getElementById('healthcareovertimeJapan_div'));
+
+			chart.draw(data, options);
+
+		} //HealthcareovertimeJapanResponseHandler
+		function HealthcareovertimeGermanyResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Spending in Millions ($)'},
+				hAxis: {title: 'Country', ticks: ['2012', '2013', '2014', '2015', '2016']}
+			};
+
+			var chart = new google.visualization.LineChart(
+						document.getElementById('healthcareovertimeGermany_div'));
+
+			chart.draw(data, options);
+
+		} //HealthcareovertimeGermanyResponseHandler
+		function HealthcareovertimeFranceResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Spending in Millions ($)'},
+				hAxis: {title: 'Country', ticks: ['2012', '2013', '2014', '2015', '2016']}
+			};
+
+			var chart = new google.visualization.LineChart(
+						document.getElementById('healthcareovertimeFrance_div'));
+
+			chart.draw(data, options);
+
+		} //HealthcareovertimeFranceResponseHandler
+		function HealthcareovertimeItalyResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Spending in Millions ($)'},
+				hAxis: {title: 'Country', ticks: ['2012', '2013', '2014', '2015', '2016']}
+			};
+
+			var chart = new google.visualization.LineChart(
+						document.getElementById('healthcareovertimeItaly_div'));
+
+			chart.draw(data, options);
+
+		} //HealthcareovertimeItalyResponseHandler
+		function HealthcareovertimeCanadaResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Spending in Millions ($)'},
+				hAxis: {title: 'Country', ticks: ['2012', '2013', '2014', '2015', '2016']}
+			};
+
+			var chart = new google.visualization.LineChart(
+						document.getElementById('healthcareovertimeCanada_div'));
+
+			chart.draw(data, options);
+
+		} //HealthcareovertimeCanadaResponseHandler
+		function HealthcareovertimeKoreaResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Spending in Millions ($)'},
+				hAxis: {title: 'Country', ticks: ['2012', '2013', '2014', '2015', '2016']}
+			};
+
+			var chart = new google.visualization.LineChart(
+						document.getElementById('healthcareovertimeKorea_div'));
+
+			chart.draw(data, options);
+
+		} //HealthcareovertimeKoreaResponseHandler
+		function HealthcareovertimeSpainResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Spending in Millions ($)'},
+				hAxis: {title: 'Country', ticks: ['2012', '2013', '2014', '2015', '2016']}
+			};
+
+			var chart = new google.visualization.LineChart(
+						document.getElementById('healthcareovertimeSpain_div'));
+
+			chart.draw(data, options);
+
+		} //HealthcareovertimeResponseSpainHandler
+		function HealthcareovertimeMexicoResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Spending in Millions ($)'},
+				hAxis: {title: 'Country', ticks: ['2012', '2013', '2014', '2015', '2016']}
+			};
+
+			var chart = new google.visualization.LineChart(
+						document.getElementById('healthcareovertimeMexico_div'));
+
+			chart.draw(data, options);
+
+		} //HealthcareovertimeMexicoResponseHandler
+		function HealthcareovertimeAustraliaResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Spending in Millions ($)'},
+				hAxis: {title: 'Country', ticks: ['2012', '2013', '2014', '2015', '2016']}
+			};
+
+			var chart = new google.visualization.LineChart(
+						document.getElementById('healthcareovertimeAustralia_div'));
+
+			chart.draw(data, options);
+
+		} //HealthcareovertimeAustraliaResponseHandler
+		function HealthcareovertimeTurkeyResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Spending in Millions ($)'},
+				hAxis: {title: 'Country', ticks: ['2012', '2013', '2014', '2015', '2016']}
+			};
+
+			var chart = new google.visualization.LineChart(
+						document.getElementById('healthcareovertimeTurkey_div'));
+
+			chart.draw(data, options);
+
+		} //HealthcareovertimeTurkeyResponseHandler
+		function HealthcareovertimeNetherlandsResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Spending in Millions ($)'},
+				hAxis: {title: 'Country', ticks: ['2012', '2013', '2014', '2015', '2016']}
+			};
+
+			var chart = new google.visualization.LineChart(
+						document.getElementById('healthcareovertimeNetherlands_div'));
+
+			chart.draw(data, options);
+
+		} //HealthcareovertimeNetherlandsResponseHandler
+		function HealthcareovertimePolandResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Spending in Millions ($)'},
+				hAxis: {title: 'Country', ticks: ['2012', '2013', '2014', '2015', '2016']}
+			};
+
+			var chart = new google.visualization.LineChart(
+						document.getElementById('healthcareovertimePoland_div'));
+
+			chart.draw(data, options);
+
+		} //HealthcareovertimePolandResponseHandler
+		function HealthcareovertimeSwitzerlandResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Spending in Millions ($)'},
+				hAxis: {title: 'Country', ticks: ['2012', '2013', '2014', '2015', '2016']}
+			};
+
+			var chart = new google.visualization.LineChart(
+						document.getElementById('healthcareovertimeSwitzerland_div'));
+
+			chart.draw(data, options);
+
+		} //HealthcareovertimeSwitzerlandResponseHandler
+		function HealthcareovertimeSwedenResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Spending in Millions ($)'},
+				hAxis: {title: 'Country', ticks: ['2012', '2013', '2014', '2015', '2016']}
+			};
+
+			var chart = new google.visualization.LineChart(
+						document.getElementById('healthcareovertimeSweden_div'));
+
+			chart.draw(data, options);
+
+		} //HealthcareovertimeSwedenResponseHandler
+		function HealthcareovertimeBelgiumResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Spending in Millions ($)'},
+				hAxis: {title: 'Country', ticks: ['2012', '2013', '2014', '2015', '2016']}
+			};
+
+			var chart = new google.visualization.LineChart(
+						document.getElementById('healthcareovertimeBelgium_div'));
+
+			chart.draw(data, options);
+
+		} //HealthcareovertimeBelgiumResponseHandler
+		function HealthcareovertimeAustriaResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Spending in Millions ($)'},
+				hAxis: {title: 'Country', ticks: ['2012', '2013', '2014', '2015', '2016']}
+			};
+
+			var chart = new google.visualization.LineChart(
+						document.getElementById('healthcareovertimeAustria_div'));
+
+			chart.draw(data, options);
+
+		} //HealthcareovertimeAustriaResponseHandler
+		function HealthcareovertimeChileResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Spending in Millions ($)'},
+				hAxis: {title: 'Country', ticks: ['2012', '2013', '2014', '2015', '2016']}
+			};
+
+			var chart = new google.visualization.LineChart(
+						document.getElementById('healthcareovertimeChile_div'));
+
+			chart.draw(data, options);
+
+		} //HealthcareovertimeChileResponseHandler
+		function HealthcareGDPPersonResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				legend: 'none',
+				vAxis: {title: 'Per Person Healthcare/Per Person GDP'},
+				hAxis: {title: 'Country'},
+				title: 'Healthcare and GDP per Person 2016',
+				isStacked: true
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('PPHCPPGDP_div'));
+
+			chart.draw(data, options);
+
+		} //HealthcareGDPPersonResponseHandler
+
+		function HealthcareGDPPerson2015ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				legend: 'none',
+				vAxis: {title: 'Per Person Healthcare/Per Person GDP'},
+				hAxis: {title: 'Country'},
+				title: 'Healthcare and GDP per Person 2015',
+				isStacked: true
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('PPHCPPGDP2015_div'));
+
+			chart.draw(data, options);
+
+		} //HealthcareGDPPperson2015ResponseHandler
+
+		function HealthcareGDPPerson2014ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				legend: 'none',
+				vAxis: {title: 'Per Person Healthcare/Per Person GDP'},
+				hAxis: {title: 'Country'},
+				title: 'Healthcare and GDP per Person 2014',
+				isStacked: true
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('PPHCPPGDP2014_div'));
+
+			chart.draw(data, options);
+
+		} //HealthcareGDPP2014personResponseHandler
+
+		function HealthcareGDPPerson2013ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				legend: 'none',
+				vAxis: {title: 'Per Person Healthcare/Per Person GDP'},
+				hAxis: {title: 'Country'},
+				title: 'Healthcare and GDP per Person 2013',
+				isStacked: true
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('PPHCPPGDP2013_div'));
+
+			chart.draw(data, options);
+
+		} //HealthcareGDPPperson2013ResponseHandler
+
+		function HealthcareGDPPerson2012ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				legend: 'none',
+				vAxis: {title: 'Per Person Healthcare/Per Person GDP'},
+				hAxis: {title: 'Country'},
+				title: 'Healthcare and GDP per Person 2012',
+				isStacked: true
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('PPHCPPGDP2012_div'));
+
+			chart.draw(data, options);
+
+		} //HealthcareGDPPperson2012ResponseHandler
+
+		function HealthcarePersonResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'US Dollars'},
+				hAxis: {title: 'Country'}
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('PPHC_div'));
+
+			chart.draw(data, options);
+
+		} //HealthcarepersonResponseHandler
+
+		function HealthcarePerson2016ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'US Dollars'},
+				hAxis: {title: 'Country'},
+				title: 'Health care Per Person 2016'
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('PPHC2016_div'));
+
+			chart.draw(data, options);
+
+		} //Healthcareperson2016ResponseHandler
+
+		function HealthcarePerson2015ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'US Dollars'},
+				hAxis: {title: 'Country'},
+				title: 'Health care Per Person 2015'
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('PPHC2015_div'));
+
+			chart.draw(data, options);
+
+		} //Healthcareperson2015ResponseHandler
+		function HealthcarePerson2014ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'US Dollars'},
+				hAxis: {title: 'Country'},
+				title: 'Health care per Person 2014'
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('PPHC2014_div'));
+
+			chart.draw(data, options);
+
+		} //Healthcareperson2014ResponseHandler
+		function HealthcarePerson2013ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'US Dollars'},
+				hAxis: {title: 'Country'},
+				title: 'Health care per Person 2013'
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('PPHC2013_div'));
+
+			chart.draw(data, options);
+
+		} //Healthcareperson2013ResponseHandler
+		function HealthcarePerson2012ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'US Dollars'},
+				hAxis: {title: 'Country'},
+				title: 'Health care per Person 2012'
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('PPHC2012_div'));
+
+			chart.draw(data, options);
+
+		} //Healthcareperson2012ResponseHandler
+		function HealthcareFixedChangeResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Change in Spending (year by year)'},
+				hAxis: {title: 'Country'}
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('HealthFixedChange_div'));
+
+			chart.draw(data, options);
+
+		} //HealthcareFixedChangeResponseHandler
+
+		function HealthcarePercentChangeResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: '% Change (year by year)'},
+				hAxis: {title: 'Country'}
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('HealthPercentChange_div'));
+
+			chart.draw(data, options);
+
+		} //HealthcarePercentChangeResponseHandler
+
+		function HealthcareFixedChangeOverallResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Change in Spending'},
+				hAxis: {title: 'Country'},
+				legend: 'none'
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('HealthFixedChangeOverall_div'));
+
+			chart.draw(data, options);
+
+		} //HealthcareFixedChangeOverallResponseHandler
+
+		function HealthcarePercentChangeOverallResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: '% Change'},
+				hAxis: {title: 'Country'},
+				legend: 'none'
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('HealthPercentChangeOverall_div'));
+
+			chart.draw(data, options);
+
+		} //HealthcarePercentChangeOverallResponseHandler
+
+		function HealthcareForecastResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Spending in USD Milliosn ($)'},
+				hAxis: {title: 'Country'}
+
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('HealthcareForecast_div'));
+
+			chart.draw(data, options);
+
+		} //HealthcarePercentChangeOverallResponseHandler
+
+
+	</script>
+	</head>
+<body>
+<div id="menu">
+				<!--this is where we can click to go to the other pages-->
+					<a href="overview.html">Home</a>
+					<a href="Education.html">Education</a>
+					<a class="active" href="Healthcare.html">Healthcare</a>
+					<a href="MilitarySpending.html">Military</a>
+					<a href="GDP.html">GDP</a>
+				</div><!--menu-->
+<div id="content">
+				<!-- Write title -->
+
+				<h2>Education and Healthcare Spending</h2>
+		
+			</div><!-- content -->
+			<!--View Charts-->
+	<h3>Health Care Expenditure by Country</h3>
+	<div id="healthcare_spending_div" class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+	<br />
+
+	<h2>Let's View changes over time</h2>
+	<!--Seeing what happens over time-->
+
+	<h2>Let's pick Individual Countries to View</h2>
+	<!--Create radio buttons for each country-->
+	<h3>Select a Country</h3>
+
+	<input id="tabUSA" type="radio" name="tabs"><label for="tabUSA">USA</label>
+
+	<input id="tabJapan" type="radio" name="tabs"><label for="tabJapan">Japan</label>
+
+	<input id="tabGermany" type="radio" name="tabs"><label for="tabGermany">Germany</label>
+
+	<input id="tabFrance" type="radio" name="tabs"><label for="tabFrance">France</label>
+
+	<input id="tabUK" type="radio" name="tabs"><label for="tabUK">UK</label>
+
+	<input id="tabItaly" type="radio" name="tabs"><label for="tabItaly">Italy</label>
+
+	<input id="tabCanada" type="radio" name="tabs"><label for="tabCanada">Canada</label>
+
+	<input id="tabKorea" type="radio" name="tabs"><label for="tabKorea">Korea</label>
+
+	<input id="tabSpain" type="radio" name="tabs"><label for="tabSpain">Spain</label>
+
+	<input id="tabMexico" type="radio" name="tabs"><label for="tabMexico">Mexico</label>
+
+	<input id="tabAustralia" type="radio" name="tabs"><label for="tabAustralia">Australia</label>
+
+	<input id="tabTurkey" type="radio" name="tabs"><label for="tabTurkey">Turkey</label>
+
+	<input id="tabNetherlands" type="radio" name="tabs"><label for="tabNetherlands">Netherlands</label>
+
+	<input id="tabPoland" type="radio" name="tabs"><label for="tabPoland">Poland</label>
+
+	<input id="tabSwitzerland" type="radio" name="tabs"><label for="tabSwitzerland">Switzerland</label>
+
+	<input id="tabSweden" type="radio" name="tabs"><label for="tabSweden">Sweden</label>
+
+	<input id="tabBelgium" type="radio" name="tabs"><label for="tabBelgium">Belgium</label>
+
+	<input id="tabAustria" type="radio" name="tabs"><label for="tabAustria">Austria</label>
+
+	<input id="tabChile" type="radio" name="tabs"><label for="tabChile">Chile</label>
+	<br/>
+
+	<!--<h3>Health Care By Country over time USA</h3>-->
+	<div id="healthcareovertimeUSA_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+	<!--<br/>
+	<h3>Health Care By Country over time Japan</h3>-->
+	<div id="healthcareovertimeJapan_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+	<!--<br/>
+	<h3>Health Care By Country over time Germany</h3>-->
+	<div id="healthcareovertimeGermany_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+	<!--<br/>
+	<h3>Health Care By Country over time France</h3>-->
+	<div id="healthcareovertimeFrance_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+	<!--<br/>
+	<h3>Health Care By Country over time UK</h3>-->
+	<div id="healthcareovertimeUK_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+	<!--<br/>
+	<h3>Health Care By Country over time Italy</h3>-->
+	<div id="healthcareovertimeItaly_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+	<!--<br/>
+	<h3>Health Care By Country over time Canada</h3>-->
+	<div id="healthcareovertimeCanada_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+	<!--<br/>
+	<h3>Health Care By Country over time Korea</h3>-->
+	<div id="healthcareovertimeKorea_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+	<!--<br/>
+	<h3>Health Care By Country over time Spain</h3>-->
+	<div id="healthcareovertimeSpain_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+	<!--<br/>
+	<h3>Health Care By Country over time Mexico</h3>-->
+	<div id="healthcareovertimeMexico_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+	<!--<br/>
+	<h3>Health Care By Country over time Australia</h3>-->
+	<div id="healthcareovertimeAustralia_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+	<!--<br/>
+	<h3>Health Care By Country over time Turkey</h3>-->
+	<div id="healthcareovertimeTurkey_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+	<!--<br/>
+	<h3>Health Care By Country over time Netherlands</h3>-->
+	<div id="healthcareovertimeNetherlands_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+	<!--<br/>
+	<h3>Health Care By Country over time Poland</h3>-->
+	<div id="healthcareovertimePoland_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+	<!--<br/>
+	<h3>Health Care By Country over time Switzerland</h3>-->
+	<div id="healthcareovertimeSwitzerland_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+	<!--<br/>
+	<h3>Health Care By Country over time Sweden</h3>-->
+	<div id="healthcareovertimeSweden_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+	<!--<br/>
+	<h3>Health Care By Country over time Belgium</h3>-->
+	<div id="healthcareovertimeBelgium_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+	<!--<br/>
+	<h3>Health Care By Country over time Austria</h3>-->
+	<div id="healthcareovertimeAustria_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+	<!--<br/>
+	<h3>Health Care By Country over time Chile</h3>-->
+	<div id="healthcareovertimeChile_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+	<br/>
+	<!--create radio buttons for each year-->
+	<h2>Health Care Expenditure by Country by Year</h2>
+	<h3>Select a year <h3/>
+	<input id="tab16" type="radio" name="tabs"><label for="tab16">2016</label>
+
+	<input id="tab15" type="radio" name="tabs"><label for="tab15">2015</label>
+
+	<input id="tab14" type="radio" name="tabs"><label for="tab14">2014</label>
+
+	<input id="tab13" type="radio" name="tabs"><label for="tab13">2013</label>
+
+	<input id="tab12" type="radio" name="tabs"><label for="tab12">2012</label>
+
+<br/>
+	<!--<h3>Health care Expenditure by Country for 2016</h3>-->
+	<div id="healthcare_spending2016_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+	<!--<br />
+	<h3>Health care Expenditure by Country for 2015</h3>-->
+	<div id="healthcare_spending2015_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+	<!--<br />
+	<h3>Health care Expenditure by Country for 2014</h3>-->
+	<div id="healthcare_spending2014_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+	<!--<br />
+	<h3>Health care Expenditure by Country for 2013</h3>-->
+	<div id="healthcare_spending2013_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+	<!--<br />
+	<h3>Health care Expenditure by Country for 2012</h3>-->
+	<div id="healthcare_spending2012_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+	<br />
+
+<!--view as % Of GDP-->
+	<h2>Let's compare Health Care expenditure by GDP</h2>
+	<h3>Health Care as % of GDP By Country</h3>
+	<div id="healthcarepercentGDP_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+	<br/>
+	<h2>Let's view by specific year</h2>
+		<h3>Select a year <h3/>
+	<input id="tab6" type="radio" name="tabs"><label for="tab6">2016</label>
+
+	<input id="tab7" type="radio" name="tabs"><label for="tab7">2015</label>
+
+	<input id="tab8" type="radio" name="tabs"><label for="tab8">2014</label>
+
+	<input id="tab9" type="radio" name="tabs"><label for="tab9">2013</label>
+
+	<input id="tab10" type="radio" name="tabs"><label for="tab10">2012</label>
+
+<br/>
+	<!--<h3>Health Care as % of GDP By Country 2016</h3>-->
+	<div id="healthcarepercentGDP2016_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+	<!--<br/>
+	<h3>Health Care as % of GDP By Country 2015</h3>-->
+	<div id="healthcarepercentGDP2015_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+	<!--<br/>
+	<h3>Health Care as % of GDP By Country 2014</h3>-->
+	<div id="healthcarepercentGDP2014_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+	<!--<br/>
+	<h3>Health Care as % of GDP By Country 2013</h3>-->
+	<div id="healthcarepercentGDP2013_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+	<!--<br/>
+	<h3>Health Care as % of GDP By Country 2012</h3>-->
+	<div id="healthcarepercentGDP2012_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+	<br/>
+
+<!--View per person-->
+	<h2>Let's View Health Care Expenditure Per Person</h2>
+	<h3>Per Person Health Care</h3>
+	<div id="PPHC_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+	<br/>
+	<h2>Let's view by specific year</h2>
+		<h3>Select a year <h3/>
+	<input id="tab11" type="radio" name="tabs"><label for="tab11">2016</label>
+
+	<input id="tab17" type="radio" name="tabs"><label for="tab17">2015</label>
+
+	<input id="tab18" type="radio" name="tabs"><label for="tab18">2014</label>
+
+	<input id="tab19" type="radio" name="tabs"><label for="tab19">2013</label>
+
+	<input id="tab20" type="radio" name="tabs"><label for="tab20">2012</label>
+
+<br/>
+
+	<!--<h3>per person health care 2016</h3>-->
+	<div id="PPHC2016_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+
+	<!--<br/>
+	<h3>per person health care 2015</h3>-->
+	<div id="PPHC2015_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+
+	<!--<br/>
+
+	<h3>per person health care 2014</h3>-->
+	<div id="PPHC2014_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+
+	<!--<br/>
+	<h3>per person health care 2013</h3>-->
+	<div id="PPHC2013_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+
+	<!--<br/>
+	<h3>per person health care 2012</h3>-->
+	<div id="PPHC2012_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+	<!--How expenditure changed over time-->
+
+	<br/>
+	<h2>What if we want to see how Health Care changed over time?</h2>
+	<h3>Health Care Change as a fixed value</h3>
+	<div id="HealthFixedChange_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+
+	<br/>
+
+	<h3>Health Care Change as a fixed value 2012 Vs 2016</h3>
+	<div id="HealthFixedChangeOverall_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+
+	<br/>
+
+	<h3>Health Care growth as a percentage</h3>
+	<div id="HealthPercentChange_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+		 <br/>
+
+	<h3>Health Care growth as a percentage 2012 Vs 2016</h3>
+	<div id="HealthPercentChangeOverall_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+		 <!--Comparisons-->
+		 <br/>
+		 <h2>Let's Compare Per Person Health Care Expenditure with Per Person GDP</h2>
+		 	<br/>
+	<h2>Let's view by specific year</h2>
+		<h3>Select a year <h3/>
+	<input id="tab21" type="radio" name="tabs"><label for="tab21">2016</label>
+
+	<input id="tab22" type="radio" name="tabs"><label for="tab22">2015</label>
+
+	<input id="tab23" type="radio" name="tabs"><label for="tab23">2014</label>
+
+	<input id="tab24" type="radio" name="tabs"><label for="tab24">2013</label>
+
+	<input id="tab25" type="radio" name="tabs"><label for="tab25">2012</label>
+
+<br/>
+
+	<!--<h3>Health Care Per person and GDP per person 2016</h3>-->
+	<div id="PPHCPPGDP_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+		<!-- <br/>
+
+	<h3>Health Care Per person and GDP per person 2015</h3>-->
+	<div id="PPHCPPGDP2015_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+		<!-- <br/>
+
+	<h3>Health Care Per person and GDP per person 2014</h3>-->
+	<div id="PPHCPPGDP2014_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+		<!-- <br/>
+
+	<h3>Health Care Per person and GDP per person 2013</h3>-->
+	<div id="PPHCPPGDP2013_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+		<!-- <br/>
+	<h3>Health Care Per person and GDP per person 2012</h3>-->
+	<div id="PPHCPPGDP2012_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+		 <br/>
+		 <h2>Time to use this knowledge to make a prediction!</h2>
+		 <h3>Health Care Forecast 2020</h3>
+		 <div id="HealthcareForecast_div" class="charts"
+		 style="width:900px; height:500px;"></div>
+
+<br/>
+
+
+</body>
+<footer><div id="menubar">
+				<!--this is where we can click to go to the other pages-->
+					<a href="overview.html">Home</a>
+					<a href="Education.html">Education</a>
+					<a class="active" href="Healthcare.html">Healthcare</a>
+					<a href="MilitarySpending.html">Military</a>
+					<a href="GDP.html">GDP</a>
+				</div><!--menubar--></footer>
+
+</html>

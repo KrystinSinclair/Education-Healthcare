@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--Connect to Google API-->
+	<title>Education</title>
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript">
+		google.charts.load('current', {'packages':['corechart']});
+		google.charts.setOnLoadCallback(getAllSheets);
+		//create function that find the datatable
+		function getAllSheets() {
+
+
+
+
+
+
+			findtheTable('education',
+			              'SELECT A,B,C,D,E,F',
+						  educationSpendingResponseHandler);
+
+
+
+
+			findtheTable('education',
+			              'SELECT A,F',
+						  educationSpendinglatestResponseHandler);
+
+			findtheTable('education',
+			              'SELECT A,E',
+						  educationSpending2015ResponseHandler);
+
+			findtheTable('education',
+			              'SELECT A,D',
+						  educationSpending2014ResponseHandler);
+
+			findtheTable('education',
+			              'SELECT A,C',
+						  educationSpending2013ResponseHandler);
+
+			findtheTable('education',
+			              'SELECT A,B',
+						  educationSpending2012ResponseHandler);
+
+
+
+			findtheTable('EducationShareGDP',
+			              'SELECT A,B,C,D,E,F',
+						  EducationShareGDPResponseHandler);
+
+			findtheTable('EducationShareGDP',
+			              'SELECT A,F',
+						  EducationShareGDP2016ResponseHandler);
+
+			findtheTable('EducationShareGDP',
+			              'SELECT A,E',
+						  EducationShareGDP2015ResponseHandler);
+
+			findtheTable('EducationShareGDP',
+			              'SELECT A,D',
+						  EducationShareGDP2014ResponseHandler);
+
+			findtheTable('EducationShareGDP',
+			              'SELECT A,C',
+						  EducationShareGDP2013ResponseHandler);
+
+			findtheTable('EducationShareGDP',
+			              'SELECT A,B',
+						  EducationShareGDP2012ResponseHandler);
+
+
+
+
+
+
+
+			findtheTable('EducationPerPerson',
+			              'SELECT A,F,M',
+						  EducationGDPPersonResponseHandler);
+
+			findtheTable('EducationPerPerson',
+			              'SELECT A,E,L',
+						  EducationGDPPerson2015ResponseHandler);
+
+			findtheTable('EducationPerPerson',
+			              'SELECT A,D,K',
+						  EducationGDPPerson2014ResponseHandler);
+
+			findtheTable('EducationPerPerson',
+			              'SELECT A,C,J',
+						  EducationGDPPerson2013ResponseHandler);
+
+			findtheTable('EducationPerPerson',
+			              'SELECT A,B,I',
+						  EducationGDPPerson2012ResponseHandler);
+
+
+
+			findtheTable('EducationPerPerson',
+			              'SELECT A,B,C,D,E,F',
+						  EducationPerPersonResponseHandler);
+
+			findtheTable('EducationPerPerson',
+			              'SELECT A,F',
+						  EducationPerPerson2016ResponseHandler);
+
+			findtheTable('EducationPerPerson',
+			              'SELECT A,E',
+						  EducationPerPerson2015ResponseHandler);
+
+			findtheTable('EducationPerPerson',
+			              'SELECT A,D',
+						  EducationPerPerson2014ResponseHandler);
+
+			findtheTable('EducationPerPerson',
+			              'SELECT A,C',
+						  EducationPerPerson2013ResponseHandler);
+
+			findtheTable('EducationPerPerson',
+			              'SELECT A,B',
+						  EducationPerPerson2012ResponseHandler);
+
+
+
+
+
+
+			findtheTable('EDUFixedChange',
+			              'SELECT A,B,C,D,E',
+						  EducationFixedChangeResponseHandler);
+
+			findtheTable('EducationPercentChange',
+			              'SELECT A,B,C,D,E',
+						  EducationPercentChangeResponseHandler);
+
+			findtheTable('EDUFixedChange',
+			              'SELECT A,F',
+						  EducationFixedChangeOverallResponseHandler);
+
+			findtheTable('EducationPercentChange',
+			              'SELECT A,F',
+						  EducationPercentChangeOverallResponseHandler);
+
+			findtheTable('education',
+							'SELECT A,G',
+							ForecastResponseHandler);
+
+
+		} //getAllSheets()
+		//find the google sheets document that has all of the google sheets
+		function findtheTable(sheetName, query, responseHandler) {
+
+			var queryString = encodeURIComponent(query);
+			var query = new google.visualization.Query(
+				'https://docs.google.com/spreadsheets/d/16rYC7mU5lV_yJzgStAj22GZ9FnOZAneit2nwuOR_zEk/gviz/tq?sheet='
+				+ sheetName + '&headers=1&tq=' + queryString);
+			query.send(responseHandler);
+		} //findtheTable
+
+
+		//make functions for each response handler that gets data and options for the chart and chart type
+		function educationSpendingResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				vAxis: {title: 'Spending in Millions ($)'},
+				hAxis: {title: 'Country'}
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('education_spending_div'));
+
+			chart.draw(data, options);
+
+		} //educationSpendingResponseHandler
+
+
+
+
+		function educationSpendinglatestResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Spending in Millions ($)'},
+				hAxis: {title: 'Country'},
+				title: 'Education Spending 2016'
+			};
+
+			var chart = new google.visualization.BarChart(
+						document.getElementById('education_spendinglatest_div'));
+
+			chart.draw(data, options);
+
+		} //educationSpendinglatestResponseHandler
+
+		function educationSpending2015ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Spending in Millions ($)'},
+				hAxis: {title: 'Country'},
+				title: 'Education Spending 2015'
+			};
+
+			var chart = new google.visualization.BarChart(
+						document.getElementById('education_spending2015_div'));
+
+			chart.draw(data, options);
+
+		} //educationSpending2015ResponseHandler
+
+		function educationSpending2014ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Spending in Millions ($)'},
+				hAxis: {title: 'Country'},
+				title: 'Education Spending 2014'
+			};
+
+			var chart = new google.visualization.BarChart(
+						document.getElementById('education_spending2014_div'));
+
+			chart.draw(data, options);
+
+		} //educationSpending2014ResponseHandler
+
+		function educationSpending2013ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Spending in Millions ($)'},
+				hAxis: {title: 'Country'},
+				title: 'Education Spending 2013'
+			};
+
+			var chart = new google.visualization.BarChart(
+						document.getElementById('education_spending2013_div'));
+
+			chart.draw(data, options);
+
+		} //educationSpending2013ResponseHandler
+
+		function educationSpending2012ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Spending in Millions ($)'},
+				hAxis: {title: 'Country'},
+				title: 'Education Spending 2012'
+			};
+
+			var chart = new google.visualization.BarChart(
+						document.getElementById('education_spending2012_div'));
+
+			chart.draw(data, options);
+
+		} //educationSpending2012ResponseHandler
+
+
+		function EducationShareGDPResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				vAxis: {title: '%'},
+				hAxis: {title: 'Country'}
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('EducationPercentGDP_div'));
+
+			chart.draw(data, options);
+
+		} //EducationShareGDPResponseHandler
+
+		function EducationShareGDP2016ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: '%'},
+				hAxis: {title: 'Country'},
+				title: 'Education Share of GDP 2016'
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('EducationPercentGDP2016_div'));
+
+			chart.draw(data, options);
+
+		} //EducationShareGDP2016ResponseHandler
+
+		function EducationShareGDP2015ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: '%'},
+				hAxis: {title: 'Country'},
+				title: 'Education Share of GDP 2015'
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('EducationPercentGDP2015_div'));
+
+			chart.draw(data, options);
+
+		} //EducationShareGDP2015ResponseHandler
+
+		function EducationShareGDP2014ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: '%'},
+				hAxis: {title: 'Country'},
+				title: 'Education Share of GDP 2014'
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('EducationPercentGDP2014_div'));
+
+			chart.draw(data, options);
+
+		} //EducationShareGDP2014ResponseHandler
+
+		function EducationShareGDP2013ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: '%'},
+				hAxis: {title: 'Country'},
+				title: 'Education Share of GDP 2013'
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('EducationPercentGDP2013_div'));
+
+			chart.draw(data, options);
+
+		} //EducationShareGDP2013ResponseHandler
+
+		function EducationShareGDP2012ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: '%'},
+				hAxis: {title: 'Country'},
+				title: 'Education Share of GDP 2012'
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('EducationPercentGDP2012_div'));
+
+			chart.draw(data, options);
+
+		} //EducationShareGDP2012ResponseHandler
+
+		function EducationPerPersonResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'US Dollars'},
+				hAxis: {title: 'Country'}
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('PPEDU_div'));
+
+			chart.draw(data, options);
+
+		} //EducationPerpersonResponseHandler
+
+			function EducationPerPerson2016ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'US Dollars'},
+				hAxis: {title: 'Country'},
+				title: 'Education per Person 2016'
+			};
+
+			var chart = new google.visualization.GeoChart(
+						document.getElementById('PPEDU2016_div'));
+
+			chart.draw(data, options);
+
+		} //EducationPerperson2016ResponseHandler
+
+		function EducationPerPerson2015ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'US Dollars'},
+				hAxis: {title: 'Country'},
+				title: 'Education per Person 2015'
+			};
+
+			var chart = new google.visualization.GeoChart(
+						document.getElementById('PPEDU2015_div'));
+
+			chart.draw(data, options);
+
+		} //EducationPerperson2015ResponseHandler
+
+		function EducationPerPerson2014ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'US Dollars'},
+				hAxis: {title: 'Country'},
+				title: 'Education per Person 2014'
+			};
+
+			var chart = new google.visualization.GeoChart(
+						document.getElementById('PPEDU2014_div'));
+
+			chart.draw(data, options);
+
+		} //EducationPerperson2014ResponseHandler
+
+		function EducationPerPerson2013ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'US Dollars'},
+				hAxis: {title: 'Country'},
+				title: 'Education per Person 2013'
+			};
+
+			var chart = new google.visualization.GeoChart(
+						document.getElementById('PPEDU2013_div'));
+
+			chart.draw(data, options);
+
+		} //EducationPerperson2013ResponseHandler
+
+		function EducationPerPerson2012ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				vAxis: {title: 'US Dollars'},
+				hAxis: {title: 'Country'},
+				title: 'Education per Person 2012'
+			};
+
+			var chart = new google.visualization.GeoChart(
+						document.getElementById('PPEDU2012_div'));
+
+			chart.draw(data, options);
+
+		} //EducationPerperson2012ResponseHandler
+
+
+		function EducationFixedChangeResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Change in Spending ( year by year)'},
+				hAxis: {title: 'Country'}
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('EDUFixedChange_div'));
+
+			chart.draw(data, options);
+
+		} //EducationFixedChangeResponseHandler
+
+		function EducationPercentChangeResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				vAxis: {title: 'Percent Change (year by year)'},
+				hAxis: {title: 'Country'}
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('EDUPercentChange_div'));
+
+			chart.draw(data, options);
+
+		} //EducationPercentChangeResponseHandler
+
+		function EducationFixedChangeOverallResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				vAxis: {title: 'Change in Spending'},
+				hAxis: {title: 'Country'},
+				legend: 'none'
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('EDUFixedChangeOverall_div'));
+
+			chart.draw(data, options);
+
+		} //EducationFixedChangeOverallResponseHandler
+
+		function EducationPercentChangeOverallResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				vAxis: {title: 'Percent Change'},
+				hAxis: {title: 'Country'},
+				legend: 'none'
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('EDUPercentChangeOverall_div'));
+
+			chart.draw(data, options);
+
+		} //EducationPercentChangeOverallResponseHandler
+
+		function EducationGDPPersonResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Per person Education Spending and Per Person GDP'},
+				hAxis: {title: 'Country'},
+				legend: 'none',
+				title: 'Education and GDP per Person 2016',
+				isStacked: true
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('PPEDUPPGDP_div'));
+
+			chart.draw(data, options);
+
+		} //EducationGDPPersonResponseHandler
+
+		function EducationGDPPerson2015ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Per person Education Spending and Per Person GDP'},
+				hAxis: {title: 'Country'},
+				legend: 'none',
+				title: 'Education and GDP per Person 2015',
+				isStacked: true
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('PPEDUPPGDP2015_div'));
+
+			chart.draw(data, options);
+
+		} //EducationGDPPerson2015ResponseHandler
+
+		function EducationGDPPerson2014ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Per person Education Spending and Per Person GDP'},
+				hAxis: {title: 'Country'},
+				legend: 'none',
+				title: 'Education and GDP per Person 2014',
+				isStacked: true
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('PPEDUPPGDP2014_div'));
+
+			chart.draw(data, options);
+
+		} //EducationGDPPerson2014ResponseHandler
+
+		function EducationGDPPerson2013ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Per person Education Spending and Per Person GDP'},
+				hAxis: {title: 'Country'},
+				legend: 'none',
+				title: 'Education and GDP per Person 2013',
+				isStacked: true
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('PPEDUPPGDP2013_div'));
+
+			chart.draw(data, options);
+
+		} //EducationGDPPerson2013ResponseHandler
+
+		function EducationGDPPerson2012ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Per person Education Spending and Per Person GDP'},
+				hAxis: {title: 'Country'},
+				legend: 'none',
+				title: 'Education and GDP per Person 2012',
+				isStacked: true
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('PPEDUPPGDP2012_div'));
+
+			chart.draw(data, options);
+
+		} //EducationGDPPerson2012ResponseHandler
+
+		function ForecastResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Spending in USD Millions ($)'},
+				hAxis: {title: 'Country'}
+
+
+
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('Forecast_div'));
+
+			chart.draw(data, options);
+
+		} //EducationForecastResponseHandler
+
+
+
+	</script>
+	</head>
+<body>
+<div id="menu">
+				<!--this is where we can click to go to the other pages-->
+					<a href="overview.html">Home</a>
+					<a class="active" href="Education.html">Education</a>
+					<a href="Healthcare.html">Healthcare</a>
+					<a href="MilitarySpending.html">Military</a>
+					<a href="GDP.html">GDP</a>
+				</div><!--menu-->
+<div id="content">
+				<!-- Write title-->
+			
+				<h2>Education and Healthcare Spending</h2>
+
+				</div><!-- content -->
+	<!--Start putting in charts/graphs-->
+	<h3>Education Expenditure By Country</h3>
+	<div id="education_spending_div" class="charts"
+		 style="width: 900px; height: 500px;"></div>
+	<br />
+<!--make radio buttons to select year-->
+<h2>Let's View Education Expenditure by Year</h2>
+	<h3>Select a year</h3>
+
+	<input id="tabA" type="radio" name="tabs"><label for="tabA">2016</label>
+
+	<input id="tabB" type="radio" name="tabs"><label for="tabB">2015</label>
+
+	<input id="tabC" type="radio" name="tabs"><label for="tabC">2014</label>
+
+	<input id="tabD" type="radio" name="tabs"><label for="tabD">2013</label>
+
+	<input id="tabE" type="radio" name="tabs"><label for="tabE">2012</label>
+
+	<br/>
+
+	<!--<h3>Education Expenditure By Country 2016</h3>-->
+	<div id="education_spendinglatest_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+	<!--<br />
+	<h3>Education Expenditure By Country 2015</h3>-->
+	<div id="education_spending2015_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+	<!--<br />
+	<h3>Education Expenditure By Country 2014</h3>-->
+	<div id="education_spending2014_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+	<!--<br />
+	<h3>Education Expenditure By Country 2013</h3>-->
+	<div id="education_spending2013_div" class="charts"
+		 style="width: 900px; height: 500px;"></div>
+	<!--<br />
+	<h3>Education Expenditure By Country 2012</h3>-->
+	<div id="education_spending2012_div" class="charts"
+		 style="width: 900px; height: 500px;"></div>
+	<br/>
+	<h2>What about Education as a % of GDP?</h2>
+	<h3>Education as % of GDP By Country</h3>
+	<div id="EducationPercentGDP_div" class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+		 <br/>
+	<!--Also make radio button for %of GDP-->
+<h2>Let's View by Individual Year</h2>
+	<h3>Select a year</h3>
+
+	<input id="tabF" type="radio" name="tabs"><label for="tabF">2016</label>
+
+	<input id="tabG" type="radio" name="tabs"><label for="tabG">2015</label>
+
+	<input id="tabH" type="radio" name="tabs"><label for="tabH">2014</label>
+
+	<input id="tabI" type="radio" name="tabs"><label for="tabI">2013</label>
+
+	<input id="tabJ" type="radio" name="tabs"><label for="tabJ">2012</label>
+
+
+
+	<br />
+	<!--<h3>Education as % of GDP By Country 2016</h3>-->
+	<div id="EducationPercentGDP2016_div" class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+	<!--<br />
+	<h3>Education as % of GDP By Country 2015</h3>-->
+	<div id="EducationPercentGDP2015_div" class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+	<!--<br />
+	<h3>Education as % of GDP By Country 2014</h3>-->
+	<div id="EducationPercentGDP2014_div" class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+	<!--<br />
+	<h3>Education as % of GDP By Country 2013</h3>-->
+	<div id="EducationPercentGDP2013_div" class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+	<!--<br />
+	<h3>Education as % of GDP By Country 2012</h3>-->
+	<div id="EducationPercentGDP2012_div" class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+	<br />
+	<h2>What if we want to see how much countries are spending per person?</h2>
+	<h3>per person EDU</h3>
+		<div id="PPEDU_div" class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+		  <br/>
+		 <!--Make radio button for Per Person spending-->
+		 <h2>Let's View by Individual Year</h2>
+	<h3>Select a year</h3>
+
+	<input id="tabK" type="radio" name="tabs"><label for="tabK">2016</label>
+
+	<input id="tabL" type="radio" name="tabs"><label for="tabL">2015</label>
+
+	<input id="tabM" type="radio" name="tabs"><label for="tabM">2014</label>
+
+	<input id="tabN" type="radio" name="tabs"><label for="tabN">2013</label>
+
+	<input id="tabO" type="radio" name="tabs"><label for="tabO">2012</label>
+
+
+
+	 <br/>
+
+	<!--<h3>per person EDU 2016</h3>-->
+		<div id="PPEDU2016_div" class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+	<!-- <br/>
+
+	<h3>per person EDU 2015</h3>-->
+		<div id="PPEDU2015_div" class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+	<!-- <br/>
+
+	<h3>per person EDU 2014</h3>-->
+		<div id="PPEDU2014_div" class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+	<!-- <br/>
+
+	<h3>per person EDU 2013</h3>-->
+		<div id="PPEDU2013_div" class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+	<!-- <br/>
+
+	<h3>per person EDU 2012</h3>-->
+		<div id="PPEDU2012_div" class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+
+
+
+
+
+	<br/>
+
+	<!--Looking at how spending changes over time-->
+	<h2>What if we want to know how things have changed over time?</h2>
+	<h3>Education Change as a fixed value</h3>
+	<div id="EDUFixedChange_div" class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+
+	<br/>
+
+	<h3>Education Change as a fixed value 2012 Vs 2016</h3>
+	<div id="EDUFixedChangeOverall_div" class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+
+	<br/>
+
+	<h3>Education growth as a percentage</h3>
+	<div id="EDUPercentChange_div" class="charts"
+		 style="width: 900px; height: 500px;"></div>
+	<br />
+	<h3>Education growth as a percentage 2012 Vs 2016</h3>
+	<div id="EDUPercentChangeOverall_div" class="charts"
+		 style="width: 900px; height: 500px;"></div>
+	<br />
+	<!--Making comparisons-->
+
+	<h2>Comparing Education Per Person and GDP Per Person</h2>
+
+	<br/>
+
+	<h3>Select a year</h3>
+
+	<input id="tabP" type="radio" name="tabs"><label for="tabP">2016</label>
+
+	<input id="tabQ" type="radio" name="tabs"><label for="tabQ">2015</label>
+
+	<input id="tabR" type="radio" name="tabs"><label for="tabR">2014</label>
+
+	<input id="tabS" type="radio" name="tabs"><label for="tabS">2013</label>
+
+	<input id="tabT" type="radio" name="tabs"><label for="tabT">2012</label>
+
+	<br/>
+
+
+	<!--<h3>Education Per Person and GDP Per Person 2016</h3>-->
+		<div id="PPEDUPPGDP_div" class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+	<!--<br />
+
+	<h3>Education Per Person and GDP Per Person 2015</h3>-->
+		<div id="PPEDUPPGDP2015_div" class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+	<!--<br/>
+
+	<h3>Education Per Person and GDP Per Person 2014</h3>-->
+		<div id="PPEDUPPGDP2014_div" class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+
+	<!--<br/>
+
+	<h3>Education Per Person and GDP Per Person 2013</h3>-->
+		<div id="PPEDUPPGDP2013_div" class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+	<!--<br/>
+
+	<h3>Education Per Person and GDP Per Person 2012</h3>-->
+		<div id="PPEDUPPGDP2012_div" class="charts"
+		 style="width: 900px; height: 500px;"></div>
+		 <br/>
+		 <h2>Time to make a prediction</h2>
+		 <h3>Education Spending Forecast for 2020</h3>
+		 <div id="Forecast_div" class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+	<br/>
+
+
+
+
+</body>
+<footer><div id="menubar">
+				<!--this is where we can click to go to the other pages-->
+					<a href="overview.html">Home</a>
+					<a class="active" href="Education.html">Education</a>
+					<a href="Healthcare.html">Healthcare</a>
+					<a href="MilitarySpending.html">Military</a>
+					<a href="GDP.html">GDP</a>
+				</div><!--menubar--></footer>
+
+</html>

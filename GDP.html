@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>GDP</title>
+	<!--conenct to Google API and CSS style sheet-->
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript">
+		google.charts.load('current', {'packages':['corechart']});
+		google.charts.setOnLoadCallback(getAllSheets);
+		//function that calls the columns and sheet
+		function getAllSheets() {
+
+
+
+
+
+
+
+			findtheTable('GDP',
+			              'SELECT A,B,C,D,E,F',
+						  GDPResponseHandler);
+
+
+			findtheTable('GDP',
+			              'SELECT A,F',
+						  GDPlatestResponseHandler);
+
+			findtheTable('GDP',
+			              'SELECT A,E',
+						  GDP2015ResponseHandler);
+
+			findtheTable('GDP',
+			              'SELECT A,D',
+						  GDP2014ResponseHandler);
+
+			findtheTable('GDP',
+			              'SELECT A,C',
+						  GDP2013ResponseHandler);
+
+			findtheTable('GDP',
+			              'SELECT A,B',
+						  GDP2012ResponseHandler);
+
+
+
+
+
+
+			findtheTable('GDPperson',
+			              'SELECT A,B,C,D,E,F',
+						  GDPpersonResponseHandler);
+			findtheTable('GDPperson',
+			              'SELECT A,F',
+						  GDPpersonGeoResponseHandler);
+			findtheTable('comparison',
+			              'SELECT A,B,C,D,E',
+						  GDPall2012ResponseHandler);
+			findtheTable('comparison',
+			              'SELECT A,F,G,H,I',
+						  GDPall2013ResponseHandler);
+			findtheTable('comparison',
+			              'SELECT A,J,K,L,M',
+						  GDPall2014ResponseHandler);
+			findtheTable('comparison',
+			              'SELECT A,N,O,P,Q',
+						  GDPall2015ResponseHandler);
+			findtheTable('comparison',
+			              'SELECT A,R,S,T,U',
+						  GDPall2016ResponseHandler);
+
+
+
+
+
+
+		} //getAllSheets()
+		//find the Google Sheet
+		function findtheTable(sheetName, query, responseHandler) {
+
+			var queryString = encodeURIComponent(query);
+			var query = new google.visualization.Query(
+				'https://docs.google.com/spreadsheets/d/16rYC7mU5lV_yJzgStAj22GZ9FnOZAneit2nwuOR_zEk/gviz/tq?sheet='
+				+ sheetName + '&headers=1&tq=' + queryString);
+			query.send(responseHandler);
+		} //findtheTable
+
+
+
+
+
+
+
+
+
+
+		//functions to get response handler for each chart
+
+
+		function GDPResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				hAxis: {title: 'Country'},
+				vAxis: {title: 'Spending in Millions ($)'}
+
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('GDP_div'));
+
+			chart.draw(data, options);
+
+		} //GDPResponseHandler
+
+
+
+		function GDPlatestResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				title: 'GDP 2016',
+				vAxis: {title: 'Country'},
+				hAxis: {title: 'Spending in Millions ($)'}
+			};
+
+			var chart = new google.visualization.BarChart(
+						document.getElementById('GDPlatest_div'));
+
+			chart.draw(data, options);
+
+		} //GDPlatestResponseHandler
+
+		function GDP2015ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				title: 'GDP 2015',
+				height: 400,
+				width: 900,
+				vAxis: {title: 'Country'},
+				hAxis: {title: 'Spending in Millions ($)'}
+			};
+
+			var chart = new google.visualization.BarChart(
+						document.getElementById('GDP2015_div'));
+
+			chart.draw(data, options);
+
+		} //GDP2015ResponseHandler
+
+		function GDP2014ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				title: 'GDP 2014',
+				vAxis: {title: 'Country'},
+				hAxis: {title: 'Spending in Millions ($)'}
+			};
+
+			var chart = new google.visualization.BarChart(
+						document.getElementById('GDP2014_div'));
+
+			chart.draw(data, options);
+
+		} //GDP2014ResponseHandler
+
+		function GDP2013ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				title: 'GDP 2013',
+				vAxis: {title: 'Country'},
+				hAxis: {title: 'Spending in Millions ($)'}
+			};
+
+			var chart = new google.visualization.BarChart(
+						document.getElementById('GDP2013_div'));
+
+			chart.draw(data, options);
+
+		} //GDP2013ResponseHandler
+
+		function GDP2012ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				title: 'GDP 2012',
+				vAxis: {title: 'Country'},
+				hAxis: {title: 'Spending in Millions ($)'}
+			};
+
+			var chart = new google.visualization.BarChart(
+						document.getElementById('GDP2012_div'));
+
+			chart.draw(data, options);
+
+		} //GDP2012ResponseHandler*/
+
+
+
+
+
+
+
+
+
+		function GDPpersonResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				vAxis: {title: 'Spending in Millions ($)'},
+				hAxis: {title: 'Country'}
+
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('PPGDP_div'));
+
+			chart.draw(data, options);
+
+		} //GDPpersonResponseHandler
+
+		function GDPpersonGeoResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				vAxis: {title: 'Country'}
+
+			};
+
+			var chart = new google.visualization.GeoChart(
+						document.getElementById('PPGDP_2016_div'));
+
+			chart.draw(data, options);
+
+		} //GDPpersonGeoResponseHandler
+
+		function GDPall2016ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				hAxis: {title: 'Country'},
+				vAxis: {title:'Spending in Millions USD ($)'},
+				title:'2016'
+
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('all_2016_div'));
+
+			chart.draw(data, options);
+
+		} //GDPall2016ResponseHandler
+		function GDPall2015ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				hAxis: {title: 'Country'},
+				vAxis: {title:'Spending in Millions USD ($)'},
+				title:'2015'
+
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('all_2015_div'));
+
+			chart.draw(data, options);
+
+		} //GDPall2015ResponseHandler
+		function GDPall2014ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				hAxis: {title: 'Country'},
+				vAxis: {title:'Spending in Millions USD ($)'},
+				title:'2014'
+
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('all_2014_div'));
+
+			chart.draw(data, options);
+
+		} //GDPall2014ResponseHandler
+		function GDPall2013ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				hAxis: {title: 'Country'},
+				vAxis: {title:'Spending in Millions USD ($)'},
+				title:'2013'
+
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('all_2013_div'));
+
+			chart.draw(data, options);
+
+		} //GDPall2013ResponseHandler
+		function GDPall2012ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				hAxis: {title: 'Country'},
+				vAxis: {title:'Spending in Millions USD ($)'},
+				title:'2012'
+
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('all_2012_div'));
+
+			chart.draw(data, options);
+
+		} //GDPall2012ResponseHandler
+
+
+	</script>
+	</head>
+<body>
+<div id="menu">
+				<!--this is where we can click to go to the other pages-->
+					<a href="overview.html">Home</a>
+					<a href="Education.html">Education</a>
+					<a href="Healthcare.html">Healthcare</a>
+					<a href="MilitarySpending.html">Military</a>
+					<a class="active" href="GDP.html">GDP</a>
+				</div><!--menu-->
+<div id="content">
+				<!-- Write title -->
+
+				<h2>Education and Healthcare Spending</h2>
+			
+			</div><!-- content -->
+	<!--View Charts-->
+	<h3>GDP By Country</h3>
+	<div id="GDP_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+
+	<!--Make radio buttons-->
+
+	<br/>
+	<h2>Now Let's view by Individual Years</h2>
+	<h3>Select a year</h3>
+
+	<input id="tab1" type="radio" name="tabs"><label for="tab1">2016</label>
+
+	<input id="tab2" type="radio" name="tabs"><label for="tab2">2015</label>
+
+	<input id="tab3" type="radio" name="tabs"><label for="tab3">2014</label>
+
+	<input id="tab4" type="radio" name="tabs"><label for="tab4">2013</label>
+
+	<input id="tab5" type="radio" name="tabs"><label for="tab5">2012</label>
+
+	<!--<h3>GDP By Country 2016</h3>-->
+	<div id="GDPlatest_div"class="charts individualyear"
+		 style="width: 900px; height: 500px;"></div>
+
+	<!--<br />
+	<h3>GDP By Country 2015</h3>-->
+	<div id="GDP2015_div"class="charts individualyear"
+		 style="width: 900px; height: 500px;"></div>
+
+	<!--<br />
+	<h3>GDP By Country 2014</h3>-->
+	<div id="GDP2014_div"class="charts individualyear"
+		 style="width: 900px; height: 500px;"></div>
+
+	<!--<br />
+	<h3>GDP By Country 2013</h3>-->
+	<div id="GDP2013_div"class="charts individualyear"
+		 style="width: 900px; height: 500px;"></div>
+
+	<!--<br />
+	<h3>GDP By Country 2012</h3>-->
+	<div id="GDP2012_div"class="charts individualyear"
+		 style="width: 900px; height: 500px;"></div>
+
+	<br/>
+	<h2>What if want to know the GDP Per Capita?</h2>
+	<h3>GDP Per Capita</h3>
+		<div id="PPGDP_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+	<br/>
+	<h2>Now Let's take a look at a World Map</h2>
+	<h3>GDP Per Capita 2016</h3>
+	<div id="PPGDP_2016_div" class="charts"
+	style="width: 900px; height: 500px"></div>
+
+<br/>
+<h2>Now Let's take a look at how GDP compares to Education, Health Care and Military Spending</h2>
+<h3>Select a year</h3>
+
+	<input id="tabAA" type="radio" name="tabs"><label for="tabAA">2016</label>
+
+	<input id="tabBB" type="radio" name="tabs"><label for="tabBB">2015</label>
+
+	<input id="tabCC" type="radio" name="tabs"><label for="tabCC">2014</label>
+
+	<input id="tabDD" type="radio" name="tabs"><label for="tabDD">2013</label>
+
+	<input id="tabEE" type="radio" name="tabs"><label for="tabEE">2012</label>
+	<!--<br />
+	<h3>all 2016</h3>-->
+	<div id="all_2016_div"class="charts individualyear"
+		 style="width: 900px; height: 500px;"></div>
+		 <!--<br />
+	<h3>all 2015</h3>-->
+	<div id="all_2015_div"class="charts individualyear"
+		 style="width: 900px; height: 500px;"></div>
+		 <!--<br />
+	<h3>all 2014</h3>-->
+	<div id="all_2014_div"class="charts individualyear"
+		 style="width: 900px; height: 500px;"></div>
+		 <!--<br />
+	<h3>all 2013</h3>-->
+	<div id="all_2013_div"class="charts individualyear"
+		 style="width: 900px; height: 500px;"></div>
+		<!-- <br />
+	<h3>all 2012</h3>-->
+	<div id="all_2012_div"class="charts individualyear"
+		 style="width: 900px; height: 500px;"></div>
+
+
+
+</body>
+<footer><div id="menubar">
+				<!--this is where we can click to go to the other pages-->
+					<a href="overview.html">Home</a>
+					<a href="Education.html">Education</a>
+					<a href="Healthcare.html">Healthcare</a>
+					<a href="MilitarySpending.html">Military</a>
+					<a class="active" href="GDP.html">GDP</a>
+				</div><!--menubar--></footer>
+
+</html>

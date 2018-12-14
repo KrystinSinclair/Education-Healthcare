@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--google API connection-->
+	<title>Military</title>
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript">
+		google.charts.load('current', {'packages':['corechart']});
+		google.charts.setOnLoadCallback(getAllSheets);
+		//create function to reach google sheet columns
+		function getAllSheets() {
+
+
+
+
+			findtheTable('military',
+			              'SELECT A,B,C,D,E,F',
+						  militaryResponseHandler);
+
+
+			findtheTable('military',
+			              'SELECT A,F',
+						  military2016ResponseHandler);
+
+			findtheTable('military',
+			              'SELECT A,E',
+						  military2015ResponseHandler);
+
+			findtheTable('military',
+			              'SELECT A,D',
+						  military2014ResponseHandler);
+
+			findtheTable('military',
+			              'SELECT A,C',
+						  military2013ResponseHandler);
+
+			findtheTable('military',
+			              'SELECT A,B',
+						  military2012ResponseHandler);
+
+			findtheTable('comparison',
+			              'SELECT A,B,C,D',
+						  all2012ResponseHandler);
+			findtheTable('comparison',
+			              'SELECT A,F,G,H',
+						  all2013ResponseHandler);
+			findtheTable('comparison',
+			              'SELECT A,J,K,L',
+						  all2014ResponseHandler);
+			findtheTable('comparison',
+			              'SELECT A,N,O,P',
+						  all2015ResponseHandler);
+			findtheTable('comparison',
+			              'SELECT A,R,S,T',
+						  all2016ResponseHandler);
+
+
+
+
+
+
+		} //getAllSheets()
+		//function to get to google sheets
+		function findtheTable(sheetName, query, responseHandler) {
+
+			var queryString = encodeURIComponent(query);
+			var query = new google.visualization.Query(
+				'https://docs.google.com/spreadsheets/d/16rYC7mU5lV_yJzgStAj22GZ9FnOZAneit2nwuOR_zEk/gviz/tq?sheet='
+				+ sheetName + '&headers=1&tq=' + queryString);
+			query.send(responseHandler);
+		} //findtheTable
+
+
+
+
+		//functions that get response handler for the different charts
+
+
+		function militaryResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				vAxis: {title: 'Spending in Millions ($)'},
+				hAxis: {title: 'Country'}
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('military_spending_div'));
+
+			chart.draw(data, options);
+
+		} //militaryResponseHandler
+
+
+
+
+		function military2016ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				title: 'Military Spending 2016'
+
+			};
+
+			var chart = new google.visualization.GeoChart(
+						document.getElementById('military_spending2016_div'));
+
+			chart.draw(data, options);
+
+		} //military2016ResponseHandler
+
+		function military2015ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				title: 'Military Spending 2015'
+
+			};
+
+			var chart = new google.visualization.GeoChart(
+						document.getElementById('military_spending2015_div'));
+
+			chart.draw(data, options);
+
+		} //military2015ResponseHandler
+
+		function military2014ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				title: 'Military Spending 2014'
+
+			};
+
+			var chart = new google.visualization.GeoChart(
+						document.getElementById('military_spending2014_div'));
+
+			chart.draw(data, options);
+
+		} //military2014ResponseHandler
+
+		function military2013ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				title: 'Military Spending 2013'
+
+			};
+
+			var chart = new google.visualization.GeoChart(
+						document.getElementById('military_spending2013_div'));
+
+			chart.draw(data, options);
+
+		} //military2013ResponseHandler
+
+
+
+
+		function military2012ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				title: 'Military Spending 2012'
+
+			};
+
+			var chart = new google.visualization.GeoChart(
+						document.getElementById('military_spending2012_div'));
+
+			chart.draw(data, options);
+
+		} //military2012ResponseHandler
+
+		function all2016ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				hAxis: {title: 'Country'},
+				vAxis: {title:'Spending in Millions USD ($)'},
+				title:'2016'
+
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('mhe_2016_div'));
+
+			chart.draw(data, options);
+
+		} //all2016ResponseHandler
+		function all2015ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				hAxis: {title: 'Country'},
+				vAxis: {title:'Spending in Millions USD ($)'},
+				title:'2015'
+
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('mhe_2015_div'));
+
+			chart.draw(data, options);
+
+		} //all2015ResponseHandler
+		function all2014ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				hAxis: {title: 'Country'},
+				vAxis: {title:'Spending in Millions USD ($)'},
+				title:'2014'
+
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('mhe_2014_div'));
+
+			chart.draw(data, options);
+
+		} //all2014ResponseHandler
+		function all2013ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				hAxis: {title: 'Country'},
+				vAxis: {title:'Spending in Millions USD ($)'},
+				title:'2013'
+
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('mhe_2013_div'));
+
+			chart.draw(data, options);
+
+		} //all2013ResponseHandler
+		function all2012ResponseHandler(response) {
+
+			var data = response.getDataTable();
+
+			var options = {
+				height: 400,
+				width: 900,
+				hAxis: {title: 'Country'},
+				vAxis: {title:'Spending in Millions USD ($)'},
+				title:'2012'
+
+			};
+
+			var chart = new google.visualization.ColumnChart(
+						document.getElementById('mhe_2012_div'));
+
+			chart.draw(data, options);
+
+		} //all2012ResponseHandler
+
+
+	</script>
+	</head>
+<body>
+<div id="menu">
+				<!--this is where we can click to go to the other pages-->
+					<a href="overview.html">Home</a>
+					<a href="Education.html">Education</a>
+					<a href="Healthcare.html">Healthcare</a>
+					<a class="active" href="MilitarySpending.html">Military</a>
+					<a href="GDP.html">GDP</a>
+				</div><!--menu-->
+<div id="content">
+				<!-- Write title  -->
+				
+				<h2>Education and Healthcare Spending</h2>
+
+			</div><!-- content -->
+
+
+	<br />
+	<!--View Charts-->
+
+	<h3>Military Expenditure By Country</h3>
+	<div id="military_spending_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+	<br/>
+
+
+	<h2>Now Let's take a look at Individual Years</h2>
+
+	<!--Make radio buttons-->
+	<h3>Select a year</h3>
+
+	<input id="tab2016" type="radio" name="tabs"><label for="tab2016">2016</label>
+
+	<input id="tab2015" type="radio" name="tabs"><label for="tab2015">2015</label>
+
+	<input id="tab2014" type="radio" name="tabs"><label for="tab2014">2014</label>
+
+	<input id="tab2013" type="radio" name="tabs"><label for="tab2013">2013</label>
+
+	<input id="tab2012" type="radio" name="tabs"><label for="tab2012">2012</label>
+
+<br/>
+	<!--<h3>Military Expenditure By Country 2016</h3>-->
+	<div id="military_spending2016_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+<!--	<br/>
+
+	<h3>Military Expenditure By Country 2015</h3>-->
+	<div id="military_spending2015_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+	<!--<br/>
+	<h3>Military Expenditure By Country 2014</h3>-->
+	<div id="military_spending2014_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+	<!--<br/>
+	<h3>Military Expenditure By Country 2013</h3>-->
+	<div id="military_spending2013_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+	<!--<br/>
+	<h3>Military Expenditure By Country 2012</h3>-->
+	<div id="military_spending2012_div"class="charts"
+		 style="width: 900px; height: 500px;"></div>
+
+<br/>
+
+<h2>Now Let's take a look at how Military compares to Education and Health Care</h2>
+<h3>Select a year</h3>
+
+	<input id="tabFF" type="radio" name="tabs"><label for="tabAA">2016</label>
+
+	<input id="tabGG" type="radio" name="tabs"><label for="tabBB">2015</label>
+
+	<input id="tabHH" type="radio" name="tabs"><label for="tabCC">2014</label>
+
+	<input id="tabII" type="radio" name="tabs"><label for="tabDD">2013</label>
+
+	<input id="tabJJ" type="radio" name="tabs"><label for="tabEE">2012</label>
+	<!--<br />
+	<h3> 2016</h3>-->
+	<div id="mhe_2016_div"class="charts individualyear"
+		 style="width: 900px; height: 500px;"></div>
+		 <!--<br />
+	<h3> 2015</h3>-->
+	<div id="mhe_2015_div"class="charts individualyear"
+		 style="width: 900px; height: 500px;"></div>
+		 <!--<br />
+	<h3> 2014</h3>-->
+	<div id="mhe_2014_div"class="charts individualyear"
+		 style="width: 900px; height: 500px;"></div>
+		 <!--<br />
+	<h3> 2013</h3>-->
+	<div id="mhe_2013_div"class="charts individualyear"
+		 style="width: 900px; height: 500px;"></div>
+		<!-- <br />
+	<h3> 2012</h3>-->
+	<div id="mhe_2012_div"class="charts individualyear"
+		 style="width: 900px; height: 500px;"></div>
+
+</body>
+<footer><div id="menubar">
+				<!--this is where we can click to go to the other pages-->
+					<a href="overview.html">Home</a>
+					<a href="Education.html">Education</a>
+					<a href="Healthcare.html">Healthcare</a>
+					<a class="active" href="MilitarySpending.html">Military</a>
+					<a href="GDP.html">GDP</a>
+				</div><!--menubar--></footer>
+
+</html>
