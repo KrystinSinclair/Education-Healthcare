@@ -1,0 +1,195 @@
+/*style sheet*/
+html {
+	height: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	position: center;
+	text-align: center;
+	float: center;
+}
+/*choose sans-serif font and center everything*/
+body{
+	font:  normal 1em sans-serif;
+	text-align: center;
+	position: center;
+	margin-right: auto;
+	margin-left: auto;
+	
+}
+/*put in a background color for the menu bar and put menu bar at top of page and also at the bottom for footer*/
+#menu {
+	background-color: #66CDAA;
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+		
+}
+#menubar {
+	background-color: #66CDAA;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	right: 0;
+		
+}
+/*make menu bar uppercase and control size and text*/
+
+#menu a, #menubar a {
+	letter-spacing: 0em;
+	font: normal 100%, sans-serif;
+	text-transform: uppercase;
+	display: block;
+	float: left;
+	height: 20px;
+	text-align: center;
+	color: #000000;
+	border: 0;
+	list-style: none;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17 px;
+	overflow: hidden;
+	margin-left: auto;
+	margin-right: auto;
+	
+}
+
+
+/*create a hover effect*/
+
+#menu a:hover, #menubar a:hover{
+	color: #FFFFFF !important;
+	text-decoration: underline;
+	font-style: italic;
+	text-align: center;
+}
+/*create an active effect*/
+#menu a:target, #menubar a:target{
+	color: #191970;
+	background-color: #FFFFFF;
+		
+}
+
+.active {
+color: #4682B4 !important;
+background-color: #FFE4E1;
+}
+
+/*centering paragraph and change color*/
+#content {
+	text-align: center;
+	width: 600 px;
+	padding: 20px 15px 20px 15px;
+	position: center;
+	color: #000080;
+	margin-left: auto;
+	margin-right: auto;
+	border-style: none none double none;
+	margin-top: 48px;
+	background-color: #C0C0C0;
+}
+
+/*center all sized headers*/
+h1,h2,h3,h4,h5,h6 {
+	text-align: center;
+	
+}
+/*center the paragraph*/
+p {
+	text-align: center;
+	
+}
+/*change color and text align left the list*/
+#content p li {
+	text-align: left;
+	color:#000000;
+
+	
+}
+/*center the list*/
+.list {
+	width: 100px;
+	margin-left: auto;
+	margin-right: auto;
+}
+/*text align left the list*/
+.list li {
+	text-align: left;
+}
+/*center the charts*/
+ .charts{
+	 margin-left: auto;
+	 margin-right:auto;
+ }
+ 
+ /* Tab Selectors for GDP and military */
+ 
+ #military_spending2016_div, #military_spending2015_div, #military_spending2014_div, #military_spending2013_div, #military_spending2012_div, #GDPlatest_div, #GDP2015_div,#GDP2014_div, #GDP2013_div, #GDP2012_div{
+	 max-height:0;
+	 max-width: 0;
+	 visibility: hidden;
+	 transition: .5s ease all;
+ }
+ 
+ #tab1:checked ~ #GDPlatest_div, #tab2:checked ~#GDP2015_div,#tab3:checked ~#GDP2014_div, #tab4:checked ~#GDP2013_div, #tab5:checked ~#GDP2012_div, #tab2016:checked ~ #military_spending2016_div, #tab2015:checked ~ #military_spending2015_div, #tab2014:checked ~ #military_spending2014_div, #tab2013:checked ~ #military_spending2013_div, #tab2012:checked ~ #military_spending2012_div {
+	max-height: 400px;
+	max-width: 900px;
+	visibility: visible;
+	
+ }
+ /*tab Selectors for education*/
+ #PPEDUPPGDP_div, #PPEDUPPGDP2015_div, #PPEDUPPGDP2014_div, #PPEDUPPGDP2013_div, #PPEDUPPGDP2012_div, #PPEDU2016_div, #PPEDU2015_div, #PPEDU2014_div, #PPEDU2013_div, #PPEDU2012_div, #EducationPercentGDP2016_div, #EducationPercentGDP2015_div, #EducationPercentGDP2014_div, #EducationPercentGDP2013_div, #EducationPercentGDP2012_div, #education_spendinglatest_div, #education_spending2015_div, #education_spending2014_div, #education_spending2013_div, #education_spending2012_div{
+	 max-height: 0;
+	 max-width: 0;
+	 visibility: hidden;
+	 transition: .5s ease all;
+ }
+ 
+ #tabA:checked ~ #education_spendinglatest_div, #tabB:checked ~ #education_spending2015_div, #tabC:checked ~#education_spending2014_div, #tabD:checked ~#education_spending2013_div, #tabE:checked ~#education_spending2012_div, #tabF:checked~#EducationPercentGDP2016_div, #tabG:checked~#EducationPercentGDP2015_div,#tabH:checked~#EducationPercentGDP2014_div,#tabI:checked~#EducationPercentGDP2013_div,#tabJ:checked~#EducationPercentGDP2012_div, #tabK:checked~#PPEDU2016_div, #tabL:checked~#PPEDU2015_div, #tabM:checked~#PPEDU2014_div, #tabN:checked~#PPEDU2013_div, #tabO:checked~#PPEDU2012_div, #tabP:checked~#PPEDUPPGDP_div, #tabQ:checked~#PPEDUPPGDP2015_div, #tabR:checked~#PPEDUPPGDP2014_div, #tabS:checked~#PPEDUPPGDP2013_div, #tabT:checked~#PPEDUPPGDP2012_div{
+	max-height: 400px;
+	max-width: 900px;
+	visibility: visible;
+	
+ }
+ 
+ /*tab Selectors for Healthcare by Country*/
+ #healthcareovertimeUSA_div, #healthcareovertimeJapan_div, #healthcareovertimeGermany_div, #healthcareovertimeFrance_div, #healthcareovertimeUK_div, #healthcareovertimeItaly_div, #healthcareovertimeCanada_div, #healthcareovertimeKorea_div, #healthcareovertimeSpain_div, #healthcareovertimeMexico_div, #healthcareovertimeAustralia_div, #healthcareovertimeTurkey_div, #healthcareovertimeNetherlands_div, #healthcareovertimePoland_div, #healthcareovertimeSwitzerland_div, #healthcareovertimeSweden_div, #healthcareovertimeBelgium_div, #healthcareovertimeAustria_div, #healthcareovertimeChile_div{
+	 max-height: 0;
+	 max-width: 0;
+	 visibility: hidden;
+	 transition: .5s ease all;
+ }
+ 
+  #tabUSA:checked~#healthcareovertimeUSA_div, #tabJapan:checked~#healthcareovertimeJapan_div, #tabGermany:checked~#healthcareovertimeGermany_div, #tabFrance:checked~#healthcareovertimeFrance_div, #tabUK:checked~#healthcareovertimeUK_div, #tabItaly:checked~#healthcareovertimeItaly_div, #tabCanada:checked~#healthcareovertimeCanada_div, #tabKorea:checked~#healthcareovertimeKorea_div, #tabSpain:checked~#healthcareovertimeSpain_div, #tabMexico:checked~#healthcareovertimeMexico_div, #tabAustralia:checked~#healthcareovertimeAustralia_div, #tabTurkey:checked~#healthcareovertimeTurkey_div, #tabNetherlands:checked~#healthcareovertimeNetherlands_div, #tabPoland:checked~#healthcareovertimePoland_div, #tabSwitzerland:checked~#healthcareovertimeSwitzerland_div, #tabSweden:checked~#healthcareovertimeSweden_div, #tabBelgium:checked~#healthcareovertimeBelgium_div, #tabAustria:checked~#healthcareovertimeAustria_div, #tabChile:checked~#healthcareovertimeChile_div{
+	 max-height: 400px;
+	max-width: 900px;
+	visibility: visible;
+ }
+ 
+ /*tab selectors for healthcare by year*/
+ #PPHCPPGDP_div, #PPHCPPGDP2015_div, #PPHCPPGDP2014_div, #PPHCPPGDP2013_div, #PPHCPPGDP2012_div, #PPHC2016_div, #PPHC2015_div, #PPHC2014_div, #PPHC2013_div, #PPHC2012_div, #healthcarepercentGDP2012_div, #healthcarepercentGDP2013_div, #healthcarepercentGDP2014_div, #healthcarepercentGDP2015_div, #healthcarepercentGDP2016_div, #healthcare_spending2016_div, #healthcare_spending2015_div, #healthcare_spending2014_div, #healthcare_spending2013_div,#healthcare_spending2012_div{
+	  max-height: 0;
+	 max-width: 0;
+	 visibility: hidden;
+	 transition: .5s ease all;
+ }
+ 
+ #tab21:checked~#PPHCPPGDP_div, #tab22:checked~#PPHCPPGDP2015_div, #tab23:checked~#PPHCPPGDP2014_div, #tab24:checked~#PPHCPPGDP2013_div, #tab25:checked~#PPHCPPGDP2012_div, #tab11:checked~#PPHC2016_div, #tab17:checked~#PPHC2015_div, #tab18:checked~#PPHC2014_div, #tab19:checked~#PPHC2013_div, #tab20:checked~#PPHC2012_div, #tab10:checked~#healthcarepercentGDP2012_div, #tab9:checked~#healthcarepercentGDP2013_div, #tab8:checked~#healthcarepercentGDP2014_div, #tab7:checked~#healthcarepercentGDP2015_div, #tab6:checked~#healthcarepercentGDP2016_div, #tab16:checked~#healthcare_spending2016_div, #tab15:checked~#healthcare_spending2015_div, #tab14:checked~#healthcare_spending2014_div, #tab13:checked~#healthcare_spending2013_div,#tab12:checked~#healthcare_spending2012_div{
+	  max-height: 400px;
+	max-width: 900px;
+	visibility: visible;
+ }
+ /*tab selectors for comparison*/
+#all_2012_div, #all_2013_div, #all_2014_div, #all_2015_div, #all_2016_div, #mhe_2012_div, #mhe_2013_div, #mhe_2014_div, #mhe_2015_div, #mhe_2016_div{
+	 max-height: 0;
+	 max-width: 0;
+	 visibility: hidden;
+	 transition: .5s ease all;
+}
+
+#tabAA:checked~#all_2016_div, #tabBB:checked~#all_2015_div,#tabCC:checked~#all_2014_div,#tabDD:checked~#all_2013_div,#tabEE:checked~#all_2012_div, #tabJJ:checked~#mhe_2012_div, #tabII:checked~#mhe_2013_div, #tabHH:checked~#mhe_2014_div, #tabGG:checked~#mhe_2015_div, #tabFF:checked~#mhe_2016_div{
+	 max-height: 400px;
+	max-width: 900px;
+	visibility: visible;
+}
